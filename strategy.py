@@ -21,20 +21,4 @@ def generate_signals(df):
         if df['Close'].iloc[i] > df['Close'].iloc[i-1]:  # Buy if price is up from yesterday
             signals.append((df.index[i], df['Close'].iloc[i], "BUY"))
     return signals
-'''
-def generate_signals(df):
-    signals = []
-    for i in range(1, len(df)):
-        rsi = df['RSI'].iloc[i]
-        ma20 = df['MA20'].iloc[i]
-        ma50 = df['MA50'].iloc[i]
-        prev_ma20 = df['MA20'].iloc[i-1]
-        prev_ma50 = df['MA50'].iloc[i-1]
-        print(f"Day {i}: RSI={rsi}, MA20={ma20}, MA50={ma50}, Prev MA20={prev_ma20}, Prev MA50={prev_ma50}")
-        
-        # Relaxed condition for testing
-        if rsi < 40 and ma20 > ma50 and prev_ma20 <= prev_ma50:
-            print(f"Signal BUY at index {i}, date {df.index[i]}")
-            signals.append((df.index[i], df['Close'].iloc[i], "BUY"))
-    return signals
-'''
+
