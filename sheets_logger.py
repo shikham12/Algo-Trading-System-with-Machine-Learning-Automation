@@ -7,7 +7,7 @@ def log_to_sheets(trades, pnl, sheet_name="AlgoTradeLog"):
     creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
     client = gspread.authorize(creds)
     
-    sheet = client.open("hi")
+    sheet = client.open(sheet_name)
     
     # Trade log
     trade_ws = sheet.worksheet("TradeLog")
@@ -23,4 +23,5 @@ def log_to_sheets(trades, pnl, sheet_name="AlgoTradeLog"):
     # P&L summary
     pnl_ws = sheet.worksheet("Summary")
     pnl_ws.update('A1', [[f"Total P&L: {pnl}"]])
+
 
